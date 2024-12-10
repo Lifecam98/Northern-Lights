@@ -18,7 +18,26 @@
 
     <main>
     <section class="search-section">
-    <input type="text" id="citySearch" placeholder="Search for a city">
+       <label for="locations">Choose a location:</label>
+    <select id="locations" name="locations">
+        <option value="loc1">Athabasca, Canada</option>
+        <option value="loc2">Capeliptrap, Australia</option>
+        <option value="loc3">Cherry Springs State Park, United States</option>
+        <option value="loc4">Cressy, Australia</option>
+        <option value="loc5">Fairbanks, United States</option>
+        <option value="loc6">Flinders, Australia</option>
+        <option value="loc7">Eagle's Nest, Inverloch, Australia</option>
+        <option value="loc8">Iqaluit, Canada</option>
+        <option value="loc9">Longyearbyen, Norway</option>
+        <option value="loc10">Melfort, Canada</option>
+        <option value="loc11">Mount Tassie, Australia</option>
+        <option value="loc12">Point Addis, Australia</option>
+        <option value="loc13">Portland, AUstralia</option>
+        <option value="loc14">Split Point Lighthouse at Aireys Inlet, Australia</option>
+        <option value="loc15">Tromsø, Norway</option>
+        <option value="loc16">Whitehorse, Yukon Territory, Canada</option>
+        <option value="loc17">Yellowknife, Canada</option>
+    </select>
     <button id="searchButton" onclick="searchCity()">Search</button>
     <select id="dateSort" onchange="sortData()">
         <option value="latest">Sort by Latest</option>
@@ -38,7 +57,5 @@
         <ul id="futureResults"></ul>
       </section>
     </main>
-
-    <script src="app.js"></script>
   </body>
 </html>
