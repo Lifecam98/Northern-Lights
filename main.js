@@ -1,29 +1,61 @@
-const today = new Date()
-const oneWeek = new Date (today.getTime() - 7 * 24 * 60 * 60 * 1000)
-const twentyFourHours = new Date (today.getTime() + 24 * 60 * 60 * 1000)
+const locationDropdown = document.getElementById('locations');
+const futureAurorasSection = document.getElementById('futureAuroras')
+const bestChanceSection = document.getElementById('bestChance')
 
-// console.log(oneWeek)
-// console.log(twentyFourHours)
+// Generere elementene hvor dataen skal vises
+const auroraInfoContainer = document.createElement('div');
+auroraInfoContainer.id = 'aurora-info';
+document.body.appendChild(auroraInfoContainer);
 
-// API base link https://publicapis.io/auroras-live-science-api
-const historicalUrl = `http://auroraslive.io/api/v1/historical?start=${oneWeek}&end=${twentyFourHours}`;
-const forecastUrl = "http://auroraslive.io/api/v1/forecast"
+const chanceOfAuroraElement = document.createElement('ul');
+chanceOfAuroraElement.id = 'chance-of-aurora';
+auroraInfoContainer.appendChild(chanceOfAuroraElement);
 
-async function getData() {
-    const proxy = "https://api.allorigins.win/get?url=";
-    const target = encodeURIComponent(forecastUrl);
-    const url = `${proxy}${target}`;
-        try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+const currentProbability = document.createElement('p');
+currentProbability.id = 'current-probability';
+chanceOfAuroraElement.appendChild(currentProbability);
+
+const bestChance = document.createElement('p');
+bestChance.id = 'best-chance';
+auroraInfoContainer.appendChild(bestChance);
+
+futureAurorasSection.after(chanceOfAuroraElement);
+bestChanceSection.after(bestChance)
+
+
+fetch('https://api.auroras.live/v1/?type=locations')
+.then(response => response.json())
+.then(data => {
+    locationDropdown.addEventListener('change', () => {
+    const selectedLocation = locationDropdown.options[locationDropdown.selectedIndex].text;
+    let locationData;
+    for (const location in data) {
+        if (data[location].description === selectedLocation) {
+            locationData = data[location];
+            break;
         }
-        const data = await response.json();
-        const actualData = JSON.parse(data.contents); 
-        console.log(actualData);
-        } catch (error) {
-        console.error("Error:", error.message);
+}
+    if (locationData) {
+        const lat = locationData.lat;
+        const long = locationData.long;
+        fetch(`https://api.auroras.live/v1/?type=all&lat=${lat}&long=${long}&forecast`)
+        .then(response => {
+            return response.json();
+            })
+            .then(forecastData => {
+            chanceOfAuroraElement.querySelectorAll('li').forEach((child) => child.remove());
+            for (i = 0; i < forecastData.threeday.values[0].length; i++) {
+                const newLi = document.createElement("li");
+                newLi.innerText = `At time ${forecastData.threeday.values[0][i].start} the KP value is ${forecastData.threeday.values[0][i].value}`
+                currentProbability.innerText = `Right now there is ${forecastData.probability.value}% chance to see the aurora at this location`
+                chanceOfAuroraElement.appendChild(newLi);
+            }
+            bestChance.innerText = `The best chance to see the aurora right now is at Latitude ${forecastData.probability.highest.lat} Longitude ${forecastData.probability.highest.long}, where the chance is ${forecastData.probability.highest.value}%`
+            })
+            .catch(error => {
+            console.error('Received error from API');
+            console.error(error);
+            });
         }
-  }
-  
-  getData();
+    });
+});

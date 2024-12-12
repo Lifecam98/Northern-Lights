@@ -15,7 +15,6 @@
     <header>
       <h1>Track Northern Lights</h1>
     </header>
-
     <main>
     <section class="search-section">
        <label for="locations">Choose a location:</label>
@@ -38,23 +37,12 @@
         <option value="loc16">Whitehorse, Yukon Territory, Canada</option>
         <option value="loc17">Yellowknife, NWT, Canada</option>
     </select>
-    <button id="searchButton" onclick="searchCity()">Search</button>
-    <select id="dateSort" onchange="sortData()">
-        <option value="latest">Sort by Latest</option>
-        <option value="oldest">Sort by Oldest</option>
-    </select>
-</section>
-        
-      </section>
-
-      <section id="pastAuroras">
-        <h2>Past 7 Days</h2>
-        <ul id="pastResults"></ul>
-      </section>
-
+    </section>
       <section id="futureAuroras">
-        <h2>Next 24 Hours</h2>
-        <ul id="futureResults"></ul>
+        <h2>Predicted chance to see the Aurora at this location</h2>
+      </section>
+      <section id="bestChance">
+        <h2>The best chance to see the aurora right now</h2>
       </section>
     </main>
   </body>
