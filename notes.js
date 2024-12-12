@@ -1,5 +1,4 @@
 const dropdown = document.getElementById('locations');
-const pastAurorasSection = document.getElementById('pastAuroras');
 const futureAurorasSection = document.getElementById('futureAuroras')
 
 // Generere elementene hvor dataen skal vises
@@ -7,15 +6,19 @@ const nordlysInfoContainer = document.createElement('div');
 nordlysInfoContainer.id = 'nordlys-info';
 document.body.appendChild(nordlysInfoContainer);
 
-const harVertNordlysElement = document.createElement('p');
-harVertNordlysElement.id = 'har-vert-nordlys';
-nordlysInfoContainer.appendChild(harVertNordlysElement);
-
-const erSjangsForNordlysElement = document.createElement('p');
+const erSjangsForNordlysElement = document.createElement('ul');
 erSjangsForNordlysElement.id = 'er-sjangs-for-nordlys';
 nordlysInfoContainer.appendChild(erSjangsForNordlysElement);
 
-pastAurorasSection.after(harVertNordlysElement);
+const chanceLi1 = document.createElement('li');
+chanceLi1.id = 'chance-1';
+erSjangsForNordlysElement.appendChild(chanceLi1);
+
+const chanceLi2 = document.createElement('li');
+chanceLi2.id = 'chance-2';
+erSjangsForNordlysElement.appendChild(chanceLi2);
+
+
 futureAurorasSection.after(erSjangsForNordlysElement);
 
 
@@ -36,7 +39,6 @@ fetch('https://api.auroras.live/v1/?type=locations')
     if (stedData) {
         const lat = stedData.lat;
         const long = stedData.long;
-        console.log(lat);
         fetch(`https://api.auroras.live/v1/?type=all&lat=${lat}&long=${long}&forecast`)
         .then(response => {
             console.log('Fikk response fra API');
@@ -45,10 +47,12 @@ fetch('https://api.auroras.live/v1/?type=locations')
             .then(forecastData => {
             console.log('Fikk forecastData');
             console.log(forecastData)
-            const harVertNordlys = forecastData.has_aurora_last_7_days;
-            const erSjangsForNordlys = forecastData.threeday.dates.join('\n');
-            harVertNordlysElement.innerText = `${harVertNordlys}`;
-            erSjangsForNordlysElement.innerText = `${erSjangsForNordlys}`;
+            // let erSjangsForNordlys = '';
+            for (i = 0; i < forecastData.threeday.values[0].length; i++) {
+                chanceLi1.innerText = `Date: ${forecastData.threeday.values[0][i].date}`;
+                chanceLi2.innerText = `Value: ${forecastData.threeday.values[0][i].value}`;
+            }
+            // erSjangsForNordlysElement.innerText = `${erSjangsForNordlys}`;
             })
             .catch(error => {
             console.error('Fikk feil fra API');
