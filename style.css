@@ -27,6 +27,7 @@ header {
   background-size: cover;
   background-position: top;
   padding: 20px;
+  height: 85px;
 }
 /* background: linear-gradient(
     to right,
