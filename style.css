@@ -131,7 +131,8 @@ a:link {
     width: 95%;
   }
   footer {
-    padding: 2rem;
+    position: relative;
+    height: auto;
     font-family: "Roboto", sans-serif;
     background: #333333;
     color: white;
