@@ -22,18 +22,20 @@ p {
 }
 
 header {
-  background: linear-gradient(
+  background-image: url("./images/Northern_Lights.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  padding: 20px;
+}
+/* background: linear-gradient(
     to right,
     #2b5876,
     #4e4376,
     #6a1d1a,
     #a6ff00,
     #00ff99 /* #ffcc00 */
-  );
-  padding: 20px;
-}
-
-h1 {
+*/ h1 {
   font-size: 2.5rem;
   margin: 0;
   -webkit-text-stroke: 0.6px black;
@@ -95,4 +97,20 @@ li .status {
 #searchButton:focus {
   outline: none;
   border: 2px solid #a6ff00;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  font-family: "Roboto", sans-serif;
+  background: #333333;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
 }
