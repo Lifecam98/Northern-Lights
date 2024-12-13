@@ -32,14 +32,8 @@ header {
   justify-content: center;
   align-items: center;
 }
-/* background: linear-gradient(
-    to right,
-    #2b5876,
-    #4e4376,
-    #6a1d1a,
-    #a6ff00,
-    #00ff99 /* #ffcc00 */
-*/ h1 {
+
+h1 {
   font-size: 2.5rem;
   margin: 0;
   -webkit-text-stroke: 0.6px black;
@@ -120,12 +114,15 @@ footer {
   background-image: url(./images/northern-lights-banner-image.webp);
   background-position: cover;
 }
+
 a:visited {
   color: #a6ff00;
 }
+
 a:link {
   color: #ffcc00;
 }
+
 @media only screen and (max-width: 768px) {
   #locations {
     width: 95%;

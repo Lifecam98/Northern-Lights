@@ -2,7 +2,6 @@ const locationDropdown = document.getElementById("locations");
 const futureAurorasSection = document.getElementById("futureAuroras");
 const bestChanceSection = document.getElementById("bestChance");
 
-// Generere elementene hvor dataen skal vises
 const auroraInfoContainer = document.createElement("div");
 auroraInfoContainer.id = "aurora-info";
 document.body.appendChild(auroraInfoContainer);
