@@ -1,0 +1,15 @@
+Mandag - Me har vårt første møte, og me går gjennom kontrakten. Me fordeler arbeidsoppgåvene. Fartein har lagd ein HTML/CSS struktur ila helga som blei presentert for resten av gruppa. Det blei bestemt at den blei tatt i bruk.
+
+
+Tirsdag - Sidan HTML/CSS allerede er 99% ferdig, er arbeidet rundt API'en, og det å hente data derifrå, det som står på planen resten av veka. Arbeidet fortsatte fram til me støtte på eit problem med sjølve APIen, som skulle bli gjennomgått av John Kristian neste dag. 
+
+
+Onsdag - Meeten til John Kristian var svært givande, og fortalte gruppa at me egentlig er ferdige med 80% av arbeidet i prosjektet. Sidan meeten varte til utpå ettermiddagen, bestemte me oss for å møtast igjen på torsdag.
+
+
+Torsdag - Dagens arbeid består av å hente data og å displaye det i DOM'en på ønskelig måte.
+
+
+Fredag - I dag har me ordna siste finpuss i javascripten, HTML og CSS. Me har fått på plass ein footer med alle githublinks, nye bannerbilder, og ikon til tab. 
+
+Me har i all hovudsak jobba synkront i ein discordkanal, der me har hatt skjermdeling oppe i Marius sin ende, og heile gjengen har komt med forslag til endringa og implementeringar under veis. Derfor er det svært få branches og pushes i prosjektet.
