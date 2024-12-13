@@ -99,7 +99,7 @@ li .status {
   border: 2px solid #a6ff00;
 }
 
-.footer {
+footer {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -113,4 +113,30 @@ li .status {
   justify-content: center;
   align-items: center;
   gap: 0.2rem;
+  background-image: url(./images/northern-lights-banner-image.webp);
+  background-position: cover;
+}
+a:visited {
+  color: #a6ff00;
+}
+a:link {
+  color: #ffcc00;
+}
+@media only screen and (max-width: 768px) {
+  #locations {
+    width: 95%;
+  }
+  footer {
+    padding: 2rem;
+    font-family: "Roboto", sans-serif;
+    background: #333333;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    background-image: url(./images/northern-lights-banner-image.webp);
+    background-position: cover;
+  }
 }
